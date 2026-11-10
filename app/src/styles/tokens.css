@@ -1,0 +1,49 @@
+/* Design tokens (DESIGN §6). Light is :root; dark is [data-theme=dark] (set by the header toggle, seeded from the OS). */
+:root {
+  --bg: #f3f5f7;
+  --surface: #ffffff;
+  --text: #14202b;
+  --muted: #4a5866;
+  --border: #d3dae1;
+  --accent: #1d4f91;
+  --focus: #1d4f91;
+
+  --aman: #e2f3e7;     --aman-fg: #136a2c;
+  --waspada: #fcefd2;  --waspada-fg: #7f4b00;
+  --bahaya: #fde2df;   --bahaya-fg: #b11f16;
+  --teknisi: #e0ebfa;  --teknisi-fg: #1b4a8a;
+
+  --sig-box: #1f6fb2;
+  --sig-condenser: #c2410c;
+  --sig-discharge: #9a3412;
+  --sig-current: #0f766e;
+  --sig-vib: #5b21b6;
+  --band: rgba(19, 106, 44, 0.12);
+
+  --radius: 12px;
+  color-scheme: light;
+}
+
+[data-theme='dark'] {
+  --bg: #0c1218;
+  --surface: #141c24;
+  --text: #e6edf3;
+  --muted: #a6b3c0;
+  --border: #2b3844;
+  --accent: #8ab8ff;
+  --focus: #8ab8ff;
+
+  --aman: #123a20;     --aman-fg: #86e3a6;
+  --waspada: #45300c;  --waspada-fg: #ffd27f;
+  --bahaya: #4a1612;   --bahaya-fg: #ffaca5;
+  --teknisi: #13304f;  --teknisi-fg: #a3c8ff;
+
+  --sig-box: #6cb4ff;
+  --sig-condenser: #ff9a5c;
+  --sig-discharge: #f6b98a;
+  --sig-current: #4fd1c5;
+  --sig-vib: #c4a7ff;
+  --band: rgba(134, 227, 166, 0.14);
+
+  color-scheme: dark;
+}

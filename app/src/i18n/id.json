@@ -1,0 +1,48 @@
+{
+  "test": {
+    "only_in_id": "Hanya ada di ID"
+  },
+  "app": {
+    "name": "CoolMechanic",
+    "skip": "Lewati ke konten"
+  },
+  "nav": {
+    "overview": "Ringkasan",
+    "architecture": "Arsitektur",
+    "rules": "Aturan Keamanan",
+    "label": "Navigasi utama"
+  },
+  "header": {
+    "updated": "Terakhir diperbarui",
+    "lang": "Bahasa",
+    "theme_dark": "Mode gelap",
+    "theme_light": "Mode terang",
+    "source": "Sumber data",
+    "no_data": "Belum ada data"
+  },
+  "status": {
+    "aman": "Aman",
+    "waspada": "Waspada",
+    "bahaya": "Jangan disentuh",
+    "teknisi": "Teknisi dipanggil"
+  },
+  "source": {
+    "SIMULATED": "SIMULASI",
+    "LAB-RIG": "RIG LAB",
+    "FIELD": "LAPANGAN"
+  },
+  "judge": {
+    "label": "Untuk juri"
+  },
+  "error": {
+    "title": "Data tidak bisa dimuat"
+  },
+  "page": {
+    "overview": "Ringkasan",
+    "machine": "Detail Mesin",
+    "case": "Detail Kasus",
+    "rules": "Aturan Keamanan",
+    "architecture": "Arsitektur",
+    "demo": "Kontrol Demo"
+  }
+}

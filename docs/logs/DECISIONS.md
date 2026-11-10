@@ -84,3 +84,9 @@ Context: The owner wants planning docs kept together. PRD §5 placed PLAN.md and
 Decision: DESIGN.md, PLAN.md and TODO.md move into `docs/logs/`. `.gitignore` ignores `docs/*` except `docs/logs/`.
 Consequences: Logs, plan, TODO and design are tracked. `docs/source/` (PRD, Entry Form with personal contact details, PDFs) and `docs/screenshots/` stay local only and need a separate backup. Deviates from PRD §5/§6 paths; the session ritual reads `docs/logs/PLAN.md` and `docs/logs/TODO.md`.
 Verified against: n/a (team decision)
+
+## ADR-012: Hash router and self-hosted font  (2026-11-10, status: accepted)
+Context: The plan marked the React Router 8 hash-router API `[VERIFY]`. The demo must run offline at the venue.
+Decision: `createHashRouter` from `react-router` with `RouterProvider` from `react-router/dom` (the DOM build wires `flushSync`). Tests use `createMemoryRouter` with the same route list. Plus Jakarta Sans is bundled through `@fontsource/plus-jakarta-sans` (400/600/700) instead of the Google Fonts CDN, so the font works with Wi-Fi off.
+Consequences: URLs look like `#/kasus/case-0001`; the static `dist/` works from any folder. Font files add about 100 kB to the build.
+Verified against: https://reactrouter.com/api/data-routers/createHashRouter and https://reactrouter.com/api/data-routers/RouterProvider (read 2026-11-10); exports checked in node_modules/react-router@8.5.1.

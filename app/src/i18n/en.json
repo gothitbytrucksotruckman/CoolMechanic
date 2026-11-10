@@ -1,0 +1,45 @@
+{
+  "app": {
+    "name": "CoolMechanic",
+    "skip": "Skip to content"
+  },
+  "nav": {
+    "overview": "Overview",
+    "architecture": "Architecture",
+    "rules": "Safety rules",
+    "label": "Main navigation"
+  },
+  "header": {
+    "updated": "Last updated",
+    "lang": "Language",
+    "theme_dark": "Dark mode",
+    "theme_light": "Light mode",
+    "source": "Data source",
+    "no_data": "No data yet"
+  },
+  "status": {
+    "aman": "OK",
+    "waspada": "Watch",
+    "bahaya": "Don't touch",
+    "teknisi": "Technician called"
+  },
+  "source": {
+    "SIMULATED": "SIMULATED",
+    "LAB-RIG": "LAB-RIG",
+    "FIELD": "FIELD"
+  },
+  "judge": {
+    "label": "For judges"
+  },
+  "error": {
+    "title": "Data could not be loaded"
+  },
+  "page": {
+    "overview": "Overview",
+    "machine": "Machine detail",
+    "case": "Case detail",
+    "rules": "Safety rules",
+    "architecture": "Architecture",
+    "demo": "Demo control"
+  }
+}
