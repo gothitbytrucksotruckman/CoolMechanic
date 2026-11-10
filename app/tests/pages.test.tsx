@@ -1,5 +1,7 @@
 import { screen } from '@testing-library/react'
 import { createMockSource } from '../src/data/mockSource'
+import arch from '../src/data/architecture.json'
+import { Architecture } from '../src/pages/Architecture'
 import { MachineDetail } from '../src/pages/MachineDetail'
 import { Overview } from '../src/pages/Overview'
 import { SafetyRules } from '../src/pages/SafetyRules'
@@ -56,6 +58,17 @@ test('safety page text comes from the stored rules', async () => {
   const deny = rows.find((r) => r.textContent?.includes('Motor kipas rusak'))!
   expect(deny.textContent).toContain('langsung ke teknisi')
   expect(rows.some((r) => r.textContent?.includes('Sikat debu dari bagian luar kisi-kisi dengan sikat kering.'))).toBe(true)
+})
+
+test('architecture statuses come from data; only the dashboard is connected', async () => {
+  renderWithSource(<Architecture />, createMockSource())
+  expect(await screen.findAllByTestId('arch-connected')).toHaveLength(1)
+  expect(screen.getAllByTestId('arch-planned')).toHaveLength(arch.length - 1)   // arch = architecture.json (13 items)
+  expect(arch).toHaveLength(13)
+  expect(screen.getAllByTestId('arch-layer')).toHaveLength(4)
+  expect(screen.getAllByTestId('arch-flow').map((f) => f.textContent)).toEqual([
+    expect.stringContaining('setiap menit'), expect.stringContaining('saat online'), expect.stringContaining('WhatsApp'),
+  ])
 })
 
 test('overview with no cases shows an empty state, not fake rows', async () => {

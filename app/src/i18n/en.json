@@ -158,5 +158,29 @@
     "escalate": "Call a technician when",
     "to_technician": "straight to a technician",
     "wait": "wait {n} min"
+  },
+  "arch": {
+    "intro": "Where the Huawei stack sits in CoolMechanic. Right now {n} of {total} components are connected; the rest are planned and their role is played by the simulator.",
+    "connected": "Connected",
+    "planned": "Planned (simulated)",
+    "layer": {
+      "machine": "Machine",
+      "site": "Site",
+      "cloud": "Cloud",
+      "people": "People"
+    },
+    "where": {
+      "machine": "One node per machine, clipped on from outside.",
+      "site": "One hub per site; detection keeps working when the internet is down.",
+      "cloud": "The agent decides who acts.",
+      "people": "Who receives what."
+    },
+    "flow": {
+      "machine": "sensor readings, every minute",
+      "site": "small alerts, when online",
+      "cloud": "guidance to the caretaker, work orders over WhatsApp/SMS, status to the owner"
+    },
+    "caption": "Readings flow from each machine to the site hub; only small alerts go to the cloud; the agent sends guidance, work orders or status to the right person.",
+    "judge": "Dashed boxes are not built yet. Their status is read from one data file, so it changes in a single edit when the real part connects."
   }
 }

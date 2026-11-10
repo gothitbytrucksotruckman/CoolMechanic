@@ -1,0 +1,15 @@
+[
+  { "id": "esp32", "layer": "machine", "name_id": "Node sensor ESP32 (3 probe suhu, klem arus, sensor getaran)", "name_en": "ESP32 sensor node (3 temperature probes, current clamp, vibration sensor)", "huawei": false, "status": "planned" },
+  { "id": "orangepi", "layer": "site", "name_id": "Orange Pi AIpro (NPU Ascend, openEuler)", "name_en": "Orange Pi AIpro (Ascend NPU, openEuler)", "huawei": true, "status": "planned" },
+  { "id": "mindspore", "layer": "site", "name_id": "Model MindSpore terkompresi", "name_en": "Compressed MindSpore model", "huawei": true, "status": "planned" },
+  { "id": "modelarts", "layer": "cloud", "name_id": "ModelArts (latih & kompres model)", "name_en": "ModelArts (train & compress model)", "huawei": true, "status": "planned" },
+  { "id": "nexent", "layer": "cloud", "name_id": "Agen ModelEngine Nexent", "name_en": "ModelEngine Nexent agent", "huawei": true, "status": "planned" },
+  { "id": "mcp_sensor", "layer": "cloud", "name_id": "MCP sensor_check", "name_en": "MCP sensor_check", "huawei": true, "status": "planned" },
+  { "id": "mcp_guide", "layer": "cloud", "name_id": "MCP safe_caretaker_guide", "name_en": "MCP safe_caretaker_guide", "huawei": true, "status": "planned" },
+  { "id": "mcp_dispatch", "layer": "cloud", "name_id": "MCP dispatch", "name_en": "MCP dispatch", "huawei": true, "status": "planned" },
+  { "id": "opengauss", "layer": "cloud", "name_id": "openGauss (data aplikasi)", "name_en": "openGauss (application data)", "huawei": true, "status": "planned" },
+  { "id": "huaweicloud", "layer": "cloud", "name_id": "Huawei Cloud", "name_en": "Huawei Cloud", "huawei": true, "status": "planned" },
+  { "id": "caretaker_app", "layer": "people", "name_id": "Aplikasi HP pengelola", "name_en": "Caretaker phone app", "huawei": false, "status": "planned" },
+  { "id": "whatsapp", "layer": "people", "name_id": "WhatsApp/SMS teknisi", "name_en": "Technician WhatsApp/SMS", "huawei": false, "status": "planned" },
+  { "id": "dashboard", "layer": "people", "name_id": "Dasbor pemilik (aplikasi ini)", "name_en": "Owner dashboard (this app)", "huawei": false, "status": "connected" }
+]

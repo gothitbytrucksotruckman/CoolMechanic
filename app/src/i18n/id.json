@@ -161,5 +161,29 @@
     "escalate": "Panggil teknisi jika",
     "to_technician": "langsung ke teknisi",
     "wait": "tunggu {n} menit"
+  },
+  "arch": {
+    "intro": "Di mana teknologi Huawei berada dalam CoolMechanic. Saat ini {n} dari {total} komponen terhubung; sisanya direncanakan dan perannya dimainkan oleh simulator.",
+    "connected": "Terhubung",
+    "planned": "Direncanakan (disimulasikan)",
+    "layer": {
+      "machine": "Mesin",
+      "site": "Lokasi",
+      "cloud": "Cloud",
+      "people": "Orang"
+    },
+    "where": {
+      "machine": "Satu node per mesin, dijepit dari luar.",
+      "site": "Satu hub per lokasi; deteksi tetap jalan saat internet mati.",
+      "cloud": "Agen memutuskan siapa yang bertindak.",
+      "people": "Siapa yang menerima apa."
+    },
+    "flow": {
+      "machine": "bacaan sensor, setiap menit",
+      "site": "peringatan kecil, saat online",
+      "cloud": "panduan ke pengelola, order servis lewat WhatsApp/SMS, status ke pemilik"
+    },
+    "caption": "Bacaan mengalir dari mesin ke hub lokasi; hanya peringatan kecil yang naik ke cloud; agen mengirim panduan, order servis, atau status ke orang yang tepat.",
+    "judge": "Kotak putus-putus belum dibangun. Statusnya dibaca dari satu file data, jadi berubah satu kali edit saat komponen asli tersambung."
   }
 }
