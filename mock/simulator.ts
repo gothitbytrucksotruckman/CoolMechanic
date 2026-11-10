@@ -41,6 +41,7 @@ interface Run {
   machine: Machine
   startMs: number
   caseId?: string
+  alertAtMin?: number
   fixAtMin?: number
   verifyAtMin?: number
 }
@@ -109,9 +110,12 @@ export function createSimulator(opts: { seed?: number; startUtc?: string } = {})
   function dispatch(run: Run, rule: SafetyRule | undefined, denied: boolean) {
     const caseId = run.caseId!
     const m = run.machine
-    const latest = store.get(m.id)!.at(-1)!
     const sig = run.script.evidence_signal
     const band = normalBands(m).find((b) => b.signal === sig)!
+    // Evidence = the reading furthest outside the band since the fault began, not just the latest sample.
+    const since = store.get(m.id)!.filter((r) => Date.parse(r.ts_utc) > run.startMs && r[sig] !== null)
+    const excess = (r: Reading) => Math.max(r[sig]! - band.high, band.low - r[sig]!)
+    const worst = since.reduce<Reading | undefined>((a, r) => (!a || excess(r) > excess(a) ? r : a), undefined)
     const d: Dispatch = {
       id: `dsp-${pad(++seq.d)}`,
       case_id: caseId,
@@ -123,7 +127,7 @@ export function createSimulator(opts: { seed?: number; startUtc?: string } = {})
         site: SITES.find((s) => s.id === m.site_id)!,
         machine: m,
         faultNameId: rule?.fault_name_id ?? run.script.fault_code,
-        evidenceLine: evidenceLine(sig, latest[sig], band),
+        evidenceLine: worst && excess(worst) > 0 ? evidenceLine(sig, worst[sig], band) : undefined,
         triedStepsId: denied ? null : (rule?.steps ?? []).map((s) => s.text_id),
         bring: run.script.bring,
       }),
@@ -140,7 +144,8 @@ export function createSimulator(opts: { seed?: number; startUtc?: string } = {})
     const rule = SAFETY_RULES.find((r) => r.fault_code === script.fault_code)
     const status = rule?.status ?? 'deny' // no rule → treat as deny
 
-    if (min === script.alertAt) {
+    if (!run.caseId && min === script.alertAt) {
+      run.alertAtMin = min
       const alert: Alert = {
         id: `al-${pad(++seq.al)}`, machine_id: machine.id, ts_utc: ts(), fault_code: script.fault_code,
         confidence: script.confidence, severity: script.severity, source: 'edge',
@@ -167,7 +172,7 @@ export function createSimulator(opts: { seed?: number; startUtc?: string } = {})
     const caseId = run.caseId
     const vr = rule.verify_rule
 
-    if (min === script.alertAt + CARETAKER_DELAY_MIN) {
+    if (min === run.alertAtMin! + CARETAKER_DELAY_MIN) {
       for (const s of rule.steps) addEvent({ case_id: caseId, ts_utc: ts(), type: 'step_done', payload: { order: s.order } })
       run.fixAtMin = min
       run.verifyAtMin = min + vr.wait_minutes

@@ -27,6 +27,7 @@ test.each(['electrical_part_fault', 'unknown_anomaly'] as const)('%s page: no st
   expect(screen.queryAllByTestId('caretaker-step')).toHaveLength(0)
   expect(screen.getByTestId('work-order').textContent).toContain('[CoolMechanic] Order servis #case-0001')
   expect(screen.getByTestId('step-guide').textContent).toContain('dilewati: daftar larangan')
+  expect(screen.queryByText(/setelah perbaikan/)).toBeNull() // no fix happened, so no "after the fix" claim
 })
 
 test('resolved case shows 4 done steps and no dispatch', async () => {

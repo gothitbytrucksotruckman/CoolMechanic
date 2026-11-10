@@ -26,6 +26,13 @@ test.each(['electrical_part_fault', 'unknown_anomaly'] as const)('%s dispatches 
   expect(s.dispatches()[0].message_text).toContain('tidak ada — dilarang untuk keamanan')
 })
 
+test.each(['m-01', 'm-02', 'm-03', 'm-04', 'm-05'])('electrical fault on %s: work-order evidence is outside the normal band', (m) => {
+  const s = createSimulator(); s.trigger('electrical_part_fault', m); s.advance(6)
+  const line = s.dispatches()[0].message_text.split('\n').find(l => l.startsWith('Bukti sensor:'))!
+  const [value, high] = [...line.matchAll(/(\d+\.\d+)/g)].map(x => Number(x[1])).filter((_, i) => i !== 1)
+  expect(value).toBeGreaterThan(high)
+})
+
 test('box temperature is still in band when the condenser alert fires', () => {
   const s = createSimulator(); s.trigger('condenser_blocked', 'm-01'); s.advance(8)
   const box = normalBands(MACHINES[0]).find(b => b.signal === 'temp_box_c')!

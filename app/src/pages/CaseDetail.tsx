@@ -72,7 +72,8 @@ export function CaseDetail() {
           ) : (
             <EmptyState title={t('chart.empty')} reason={t('case.no_signal')} />
           )}
-          <div className="mt-3"><JudgeNote d="D3">{t('case.judge_d3')}</JudgeNote></div>
+          {vs ? <div className="mt-3"><JudgeNote d="D3">{t('case.judge_d3')}</JudgeNote></div>
+            : <p className="mt-3 text-sm text-muted">{t('case.evidence_note')}</p>}
         </Card>
       </div>
 

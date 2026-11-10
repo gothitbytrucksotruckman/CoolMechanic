@@ -119,7 +119,8 @@
     "evidence": "Sensor evidence",
     "no_signal": "This case has no signal to show.",
     "judge_d3": "Sensors re-read after the fix: the line must return to the green band.",
-    "work_order": "Message to the technician"
+    "work_order": "Message to the technician",
+    "evidence_note": "The signal that raised the alert. The caretaker made no fix, so this data goes to the technician."
   },
   "timeline": {
     "label": "Five case steps",

@@ -46,7 +46,8 @@ export function SensorChart(p: {
             {p.band && <ReferenceArea y1={p.band.low} y2={p.band.high} fill="var(--band)" stroke="none" ifOverflow="extendDomain" />}
             {p.markers?.map((m) => (
               <ReferenceLine key={m.ts_utc + m.label} x={Date.parse(m.ts_utc)} stroke="var(--text)" strokeWidth={1.5} strokeDasharray={m.dashed ? '5 4' : undefined}
-                label={{ value: m.label, position: 'insideTopLeft', fill: 'var(--text)', fontSize: 13, fontWeight: 600 }} />
+                // detected label sits left of its line, fix label right of its line, so close markers never overlap
+                label={{ value: m.label, position: m.dashed ? 'insideTopRight' : 'insideTopLeft', fill: 'var(--text)', fontSize: 13, fontWeight: 600 }} />
             ))}
             <Tooltip labelFormatter={(x) => fmtTime(new Date(Number(x)).toISOString(), lang)} formatter={(v) => [`${v} ${label.unit}`, label[lang]]}
               contentStyle={{ background: 'var(--surface)', border: '1px solid var(--border)', color: 'var(--text)' }} />

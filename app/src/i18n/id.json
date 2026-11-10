@@ -122,7 +122,8 @@
     "evidence": "Bukti sensor",
     "no_signal": "Kasus ini tidak punya sinyal untuk ditampilkan.",
     "judge_d3": "Sensor membaca ulang setelah perbaikan: garis harus kembali ke area hijau.",
-    "work_order": "Pesan untuk teknisi"
+    "work_order": "Pesan untuk teknisi",
+    "evidence_note": "Sinyal yang memicu peringatan. Tidak ada perbaikan oleh pengelola, jadi data ini dikirim ke teknisi."
   },
   "timeline": {
     "label": "Lima langkah kasus",

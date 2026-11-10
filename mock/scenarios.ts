@@ -41,11 +41,16 @@ export const SCENARIOS: Record<ScenarioId, ScenarioScript> = {
   electrical_part_fault: {
     fault_code: 'electrical_part_fault', alertAt: 5, severity: 'critical', confidence: 0.82,
     evidence_signal: 'current_rms_a', fixWorks: false, bring: 'Kapasitor start dan relay start sesuai tipe kompresor',
-    apply(r, _m, _d, machine, tMs) {
-      if (!isCompressorOn(machine, tMs)) return
-      const phase = (Math.floor(tMs / 60_000) + Number(machine.id.slice(2)) * 7) % CYCLE_MIN
-      if (phase < 2) add(r, 'current_rms_a', 1.5 * KIND_PARAMS[machine.kind].nominal_a)
-      add(r, 'vib_rms_g', 0.3, 3)
+    // A failing start part: high current on every start, a struggling run, and retry spikes while "off".
+    apply(r, m, _d, machine, tMs) {
+      const nominal = KIND_PARAMS[machine.kind].nominal_a
+      if (isCompressorOn(machine, tMs)) {
+        const phase = (Math.floor(tMs / 60_000) + Number(machine.id.slice(2)) * 7) % CYCLE_MIN
+        add(r, 'current_rms_a', (phase < 2 ? 1.5 : 0.4) * nominal)
+        add(r, 'vib_rms_g', 0.3, 3)
+      } else if (m % 3 === 0) {
+        add(r, 'current_rms_a', 1.6 * nominal) // start attempt that trips
+      }
     },
   },
   unknown_anomaly: {
