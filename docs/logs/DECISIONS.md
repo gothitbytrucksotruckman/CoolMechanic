@@ -73,6 +73,12 @@ Decision: Leave fan imbalance out of the dashboard's fault codes; it is training
 Consequences: The wait times still need the refrigeration advisor's confirmation later.
 Verified against: Entry Information Form; project doc safety table
 
+## ADR-011: Contract refinements found while planning  (2026-11-10, status: accepted)
+Context: Writing the implementation plan exposed gaps in DESIGN §3: a fault-wide `target_range` can't fit machines with different setpoints, and deny cases had no signal to chart.
+Decision (proposed): (1) `SafetyRule.verify_rule` = `{signal, target: "normal_band", wait_minutes} | null` (null for deny); the per-machine range is stored in the `verify_start` payload as `target_range`. (2) The `alert` CaseEvent payload gains `evidence_signal`. (3) New `GlobalRule {order, text_id, text_en}` for the three every-fault rules. (4) `NormalBand.source` uses the provenance enum. (5) DataSource gains `listCaseEvents(limit)` and `listGlobalRules()`; `getCase` returns null when not found.
+Consequences: Owner OK needed before plan Task 2. The other students review it with the rest of `contract/`.
+Verified against: n/a (contract decision)
+
 ## ADR-010: Project docs live in docs/logs/ and are tracked; the rest of docs/ is git-ignored  (2026-11-10, status: accepted)
 Context: The owner wants planning docs kept together. PRD §5 placed PLAN.md and TODO.md at the root and DESIGN.md in docs/. A first version ignored all of `docs/`; it was reversed the same day so the team's shared memory stays in git.
 Decision: DESIGN.md, PLAN.md and TODO.md move into `docs/logs/`. `.gitignore` ignores `docs/*` except `docs/logs/`.

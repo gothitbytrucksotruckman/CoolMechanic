@@ -4,7 +4,7 @@ Source of truth: `docs/source/PRD.md` (§10). Worst-case first deadline: **15 De
 
 | Phase | Goal | Exit criteria (evidence) | Status |
 |---|---|---|---|
-| P0 Brainstorm | Decisions locked | `docs/logs/DESIGN.md` approved; ADRs written | **In progress** (started 2026-11-10) |
+| P0 Brainstorm | Decisions locked | `docs/logs/DESIGN.md` approved; ADRs written | **Done** 2026-11-10 (task breakdown: `docs/logs/IMPLEMENTATION_PLAN.md`) |
 | P1 Foundations | Repo, tooling, contract, tokens | `contract/` types + example payloads; tokens.css with both themes; app runs locally | Not started |
 | P2 Simulator | Repeatable data | All §8 scenarios run with time controls; output validates against the contract | Not started |
 | P3 Core screens | Overview, sites/machines, machine detail | Screens render live simulated data; empty and offline states done | Not started |

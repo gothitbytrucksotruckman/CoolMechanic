@@ -10,3 +10,4 @@ Newest first, append-only.
 - Update (same day): Phase 0 questions answered (ADR-001 to ADR-008 accepted, ADR-009 proposed). `docs/DESIGN.md` drafted; awaiting the team's "approved".
 - Update: ADR-009 accepted. ADR-010: DESIGN, PLAN and TODO moved into `docs/logs/`; `.gitignore` now ignores all of `docs/`.
 - Update: reversed the ignore for `docs/logs/`. `.gitignore` is now `docs/*` + `!docs/logs/`, so the logs are tracked and `docs/source/` stays local.
+- Update: DESIGN.md approved. Wrote `docs/logs/IMPLEMENTATION_PLAN.md` (13 tasks, P1–P5). Library versions read from the npm registry; Zod 4 `z.toJSONSchema` and Recharts `ReferenceArea`/`ReferenceLine` checked by running them in a scratch install. ADR-011 proposed (contract refinements).
