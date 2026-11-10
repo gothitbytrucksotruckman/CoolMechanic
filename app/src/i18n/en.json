@@ -147,5 +147,16 @@
     "sent": "Sent",
     "delivered": "Delivered",
     "failed": "Failed"
+  },
+  "rules": {
+    "intro": "The agent never improvises repair advice. Every fault is looked up in this table, shown exactly as stored.",
+    "global": "Rules for every fault",
+    "judge_d2": "Allow, observe and deny lists. Deny-list faults have no steps at all.",
+    "fault": "Fault",
+    "steps": "Caretaker steps",
+    "verify": "How sensors check",
+    "escalate": "Call a technician when",
+    "to_technician": "straight to a technician",
+    "wait": "wait {n} min"
   }
 }

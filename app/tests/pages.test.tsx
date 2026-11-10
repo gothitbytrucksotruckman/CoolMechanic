@@ -2,6 +2,7 @@ import { screen } from '@testing-library/react'
 import { createMockSource } from '../src/data/mockSource'
 import { MachineDetail } from '../src/pages/MachineDetail'
 import { Overview } from '../src/pages/Overview'
+import { SafetyRules } from '../src/pages/SafetyRules'
 import { renderWithSource } from './render'
 
 function fixture() {
@@ -40,6 +41,21 @@ test('a probe gap in the chart window is labelled "sensor lepas"', async () => {
   const ds = createMockSource()
   renderWithSource(<MachineDetail />, ds, '/mesin/m-01') // m-01 discharge dropout is 3h before start: inside the 3h window edge
   expect(await screen.findByText(/sensor lepas/)).toBeTruthy()
+})
+
+test('safety page shows every stored rule and global rule, read-only', async () => {
+  renderWithSource(<SafetyRules />, createMockSource())
+  expect(await screen.findAllByTestId('rule-row')).toHaveLength(10)
+  expect(screen.getAllByTestId('global-rule')).toHaveLength(3)
+  expect(screen.queryAllByRole('button')).toHaveLength(0)
+})
+
+test('safety page text comes from the stored rules', async () => {
+  renderWithSource(<SafetyRules />, createMockSource())
+  const rows = await screen.findAllByTestId('rule-row')
+  const deny = rows.find((r) => r.textContent?.includes('Motor kipas rusak'))!
+  expect(deny.textContent).toContain('langsung ke teknisi')
+  expect(rows.some((r) => r.textContent?.includes('Sikat debu dari bagian luar kisi-kisi dengan sikat kering.'))).toBe(true)
 })
 
 test('overview with no cases shows an empty state, not fake rows', async () => {

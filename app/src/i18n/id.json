@@ -150,5 +150,16 @@
     "sent": "Terkirim",
     "delivered": "Diterima",
     "failed": "Gagal"
+  },
+  "rules": {
+    "intro": "Agen tidak pernah mengarang saran perbaikan. Setiap gangguan dicari di tabel ini. Tabel ditampilkan persis seperti yang tersimpan.",
+    "global": "Aturan untuk semua gangguan",
+    "judge_d2": "Daftar boleh, pantau, dan larangan. Gangguan di daftar larangan tidak punya langkah sama sekali.",
+    "fault": "Gangguan",
+    "steps": "Langkah untuk pengelola",
+    "verify": "Cara sensor memeriksa",
+    "escalate": "Panggil teknisi jika",
+    "to_technician": "langsung ke teknisi",
+    "wait": "tunggu {n} menit"
   }
 }
