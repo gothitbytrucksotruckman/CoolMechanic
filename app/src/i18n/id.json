@@ -63,5 +63,19 @@
     "reset_confirm": "Hapus semua kasus dan mulai ulang dari awal?",
     "reset_yes": "Ya, reset",
     "reset_no": "Batal"
+  },
+  "overview": {
+    "counts": "Jumlah status mesin",
+    "machines": "Mesin (yang perlu perhatian di atas)",
+    "years": "th",
+    "last_reading": "Bacaan terakhir",
+    "outcomes": "Hasil kasus",
+    "resolved": "Selesai di tempat",
+    "dispatched": "Teknisi dipanggil",
+    "since_start": "Sejak simulasi dimulai",
+    "feed": "Kejadian terbaru",
+    "no_cases": "Belum ada kasus",
+    "no_cases_reason": "Semua mesin bekerja normal sejak simulasi dimulai.",
+    "judge_d1": "Merek dan umur mesin campuran — sensor jepit untuk mesin apa saja, termasuk mesin lama."
   }
 }

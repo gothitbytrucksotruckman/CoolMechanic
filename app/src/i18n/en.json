@@ -60,5 +60,19 @@
     "reset_confirm": "Clear all cases and start over?",
     "reset_yes": "Yes, reset",
     "reset_no": "Cancel"
+  },
+  "overview": {
+    "counts": "Machine status counts",
+    "machines": "Machines (needing attention first)",
+    "years": "yrs",
+    "last_reading": "Last reading",
+    "outcomes": "Case outcomes",
+    "resolved": "Fixed on site",
+    "dispatched": "Technician called",
+    "since_start": "Since the simulation started",
+    "feed": "Latest events",
+    "no_cases": "No cases yet",
+    "no_cases_reason": "All machines have run normally since the simulation started.",
+    "judge_d1": "Mixed brands and ages — clip-on sensors fit any machine, including old ones."
   }
 }
