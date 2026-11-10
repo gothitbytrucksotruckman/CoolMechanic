@@ -74,5 +74,36 @@
     "no_cases": "No cases yet",
     "no_cases_reason": "All machines have run normally since the simulation started.",
     "judge_d1": "Mixed brands and ages — clip-on sensors fit any machine, including old ones."
+  },
+  "chart": {
+    "gap": "sensor disconnected",
+    "empty": "No readings in this time range yet.",
+    "detected": "Detected",
+    "fix": "Fix"
+  },
+  "machine": {
+    "not_found": "Machine not found",
+    "not_found_reason": "No machine has code {id}. Go back to the Overview to pick one.",
+    "profile": "Machine profile",
+    "brand_model": "Brand & model",
+    "kind": "Type",
+    "age": "Age",
+    "condenser": "Back coils",
+    "site": "Location",
+    "installed": "Sensors installed",
+    "judge_d1": "An old machine with no built-in IoT: sensors clip on from outside, no opening the machine.",
+    "health": "Sensor health",
+    "probes_ok": "sensors OK",
+    "cases": "Case history",
+    "no_cases_reason": "This machine has had no faults since the simulation started.",
+    "charts": "Sensor charts",
+    "window": "Last 3 hours. Green area = this machine's normal range."
+  },
+  "state": {
+    "OPEN": "Open",
+    "GUIDING": "Guiding caretaker",
+    "VERIFYING": "Checking the fix",
+    "RESOLVED": "Resolved",
+    "DISPATCHED": "Technician called"
   }
 }

@@ -77,5 +77,36 @@
     "no_cases": "Belum ada kasus",
     "no_cases_reason": "Semua mesin bekerja normal sejak simulasi dimulai.",
     "judge_d1": "Merek dan umur mesin campuran — sensor jepit untuk mesin apa saja, termasuk mesin lama."
+  },
+  "chart": {
+    "gap": "sensor lepas",
+    "empty": "Belum ada bacaan pada rentang waktu ini.",
+    "detected": "Terdeteksi",
+    "fix": "Perbaikan"
+  },
+  "machine": {
+    "not_found": "Mesin tidak ditemukan",
+    "not_found_reason": "Tidak ada mesin dengan kode {id}. Kembali ke Ringkasan untuk memilih mesin.",
+    "profile": "Profil mesin",
+    "brand_model": "Merek & model",
+    "kind": "Jenis",
+    "age": "Umur",
+    "condenser": "Kisi-kisi belakang",
+    "site": "Lokasi",
+    "installed": "Sensor dipasang",
+    "judge_d1": "Mesin lama tanpa IoT bawaan: sensor jepit dipasang dari luar, tanpa membuka mesin.",
+    "health": "Kesehatan sensor",
+    "probes_ok": "sensor normal",
+    "cases": "Riwayat kasus",
+    "no_cases_reason": "Mesin ini belum pernah mengalami gangguan sejak simulasi dimulai.",
+    "charts": "Grafik sensor",
+    "window": "3 jam terakhir. Area hijau = rentang normal mesin ini."
+  },
+  "state": {
+    "OPEN": "Terbuka",
+    "GUIDING": "Memandu pengelola",
+    "VERIFYING": "Memeriksa hasil",
+    "RESOLVED": "Selesai",
+    "DISPATCHED": "Teknisi dipanggil"
   }
 }

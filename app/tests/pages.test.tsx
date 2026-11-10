@@ -1,5 +1,6 @@
 import { screen } from '@testing-library/react'
 import { createMockSource } from '../src/data/mockSource'
+import { MachineDetail } from '../src/pages/MachineDetail'
 import { Overview } from '../src/pages/Overview'
 import { renderWithSource } from './render'
 
@@ -20,6 +21,25 @@ test('overview shows the case feed and resolved vs dispatched counts', async () 
   expect((await screen.findByTestId('count-dispatched')).textContent).toBe('1')
   expect(screen.getByTestId('count-resolved').textContent).toBe('0')
   expect(screen.getAllByTestId('feed-item').length).toBeGreaterThan(0)
+})
+
+test('machine detail shows profile, sensor health and case history', async () => {
+  renderWithSource(<MachineDetail />, fixture(), '/mesin/m-04')
+  expect(await screen.findByText('Merek D UF-400')).toBeTruthy()
+  expect(screen.getByTestId('sensor-health').textContent).toContain('5/5')
+  expect(screen.getAllByTestId('case-row')).toHaveLength(1)
+  expect(screen.getAllByTestId('sensor-chart')).toHaveLength(5)
+})
+
+test('unknown machine id shows an empty state', async () => {
+  renderWithSource(<MachineDetail />, fixture(), '/mesin/m-99')
+  expect(await screen.findByText('Mesin tidak ditemukan')).toBeTruthy()
+})
+
+test('a probe gap in the chart window is labelled "sensor lepas"', async () => {
+  const ds = createMockSource()
+  renderWithSource(<MachineDetail />, ds, '/mesin/m-01') // m-01 discharge dropout is 3h before start: inside the 3h window edge
+  expect(await screen.findByText(/sensor lepas/)).toBeTruthy()
 })
 
 test('overview with no cases shows an empty state, not fake rows', async () => {
