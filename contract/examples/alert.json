@@ -1,0 +1,1 @@
+{ "id": "al-0001", "machine_id": "m-01", "ts_utc": "2026-11-10T01:08:00Z", "fault_code": "condenser_blocked", "confidence": 0.87, "severity": "warning", "source": "edge" }

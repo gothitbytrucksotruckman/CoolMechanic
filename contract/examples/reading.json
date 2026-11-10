@@ -1,0 +1,1 @@
+{ "machine_id": "m-01", "ts_utc": "2026-11-10T01:00:00Z", "provenance": "SIMULATED", "temp_box_c": -17.6, "temp_condenser_c": 38.2, "temp_discharge_c": 63.1, "current_rms_a": 1.01, "vib_rms_g": 0.25, "sensor_health": { "box_ok": true, "condenser_ok": true, "discharge_ok": true, "current_ok": true, "vib_ok": true } }

@@ -1,0 +1,9 @@
+{
+  "fault_code": "interior_vent_blocked",
+  "fault_name_id": "Lubang angin di dalam tertutup barang",
+  "fault_name_en": "Interior vent blocked by stock",
+  "status": "allow",
+  "steps": [{ "order": 1, "text_id": "Atur ulang barang agar tidak menutupi lubang kipas di dalam.", "text_en": "Rearrange stock away from the interior fan outlet." }],
+  "verify_rule": { "signal": "temp_box_c", "target": "normal_band", "wait_minutes": 15 },
+  "escalate_when": { "text_id": "Kipas terlihat tidak berputar", "text_en": "Fan appears stalled" }
+}

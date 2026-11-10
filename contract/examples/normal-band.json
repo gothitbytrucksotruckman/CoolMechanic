@@ -1,0 +1,1 @@
+{ "machine_id": "m-01", "signal": "temp_condenser_c", "low": 25, "high": 46, "source": "SIMULATED" }

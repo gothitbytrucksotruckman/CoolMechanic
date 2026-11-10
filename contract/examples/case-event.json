@@ -1,0 +1,1 @@
+{ "case_id": "case-0001", "ts_utc": "2026-11-10T01:14:00Z", "type": "verify_start", "payload": { "signal": "temp_condenser_c", "target_range": [25, 46], "wait_minutes": 15 } }

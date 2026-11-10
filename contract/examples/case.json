@@ -1,0 +1,1 @@
+{ "id": "case-0001", "machine_id": "m-01", "fault_code": "condenser_blocked", "safety_status": "allow", "state": "RESOLVED", "opened_at": "2026-11-10T01:08:00Z", "closed_at": "2026-11-10T01:29:00Z" }

@@ -1,0 +1,1021 @@
+{
+  "site": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "id": {
+        "type": "string"
+      },
+      "name": {
+        "type": "string"
+      },
+      "type": {
+        "type": "string",
+        "enum": [
+          "ice_depot",
+          "market_vendor",
+          "canteen",
+          "cooperative",
+          "lab"
+        ]
+      },
+      "area": {
+        "type": "string"
+      },
+      "timezone": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "id",
+      "name",
+      "type",
+      "area",
+      "timezone"
+    ],
+    "additionalProperties": false
+  },
+  "machine": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "id": {
+        "type": "string"
+      },
+      "site_id": {
+        "type": "string"
+      },
+      "name": {
+        "type": "string"
+      },
+      "kind": {
+        "type": "string",
+        "enum": [
+          "chest_freezer",
+          "upright_freezer",
+          "ice_maker",
+          "cold_room"
+        ]
+      },
+      "brand": {
+        "type": "string"
+      },
+      "model": {
+        "type": "string"
+      },
+      "approx_age_years": {
+        "type": "number",
+        "minimum": 0
+      },
+      "condenser_type": {
+        "type": "string",
+        "enum": [
+          "fan",
+          "static"
+        ]
+      },
+      "installed_at": {
+        "type": "string",
+        "format": "date-time",
+        "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d(?:\\.\\d+)?(?:Z))$"
+      }
+    },
+    "required": [
+      "id",
+      "site_id",
+      "name",
+      "kind",
+      "brand",
+      "model",
+      "approx_age_years",
+      "condenser_type",
+      "installed_at"
+    ],
+    "additionalProperties": false
+  },
+  "reading": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "machine_id": {
+        "type": "string"
+      },
+      "ts_utc": {
+        "type": "string",
+        "format": "date-time",
+        "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d(?:\\.\\d+)?(?:Z))$"
+      },
+      "provenance": {
+        "type": "string",
+        "enum": [
+          "SIMULATED",
+          "LAB-RIG",
+          "FIELD"
+        ]
+      },
+      "temp_box_c": {
+        "type": [
+          "number",
+          "null"
+        ]
+      },
+      "temp_condenser_c": {
+        "type": [
+          "number",
+          "null"
+        ]
+      },
+      "temp_discharge_c": {
+        "type": [
+          "number",
+          "null"
+        ]
+      },
+      "current_rms_a": {
+        "type": [
+          "number",
+          "null"
+        ]
+      },
+      "vib_rms_g": {
+        "type": [
+          "number",
+          "null"
+        ]
+      },
+      "sensor_health": {
+        "type": "object",
+        "properties": {
+          "box_ok": {
+            "type": "boolean"
+          },
+          "condenser_ok": {
+            "type": "boolean"
+          },
+          "discharge_ok": {
+            "type": "boolean"
+          },
+          "current_ok": {
+            "type": "boolean"
+          },
+          "vib_ok": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "box_ok",
+          "condenser_ok",
+          "discharge_ok",
+          "current_ok",
+          "vib_ok"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "required": [
+      "machine_id",
+      "ts_utc",
+      "provenance",
+      "temp_box_c",
+      "temp_condenser_c",
+      "temp_discharge_c",
+      "current_rms_a",
+      "vib_rms_g",
+      "sensor_health"
+    ],
+    "additionalProperties": false
+  },
+  "normal-band": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "machine_id": {
+        "type": "string"
+      },
+      "signal": {
+        "type": "string",
+        "enum": [
+          "temp_box_c",
+          "temp_condenser_c",
+          "temp_discharge_c",
+          "current_rms_a",
+          "vib_rms_g"
+        ]
+      },
+      "low": {
+        "type": "number"
+      },
+      "high": {
+        "type": "number"
+      },
+      "source": {
+        "type": "string",
+        "enum": [
+          "SIMULATED",
+          "LAB-RIG",
+          "FIELD"
+        ]
+      }
+    },
+    "required": [
+      "machine_id",
+      "signal",
+      "low",
+      "high",
+      "source"
+    ],
+    "additionalProperties": false
+  },
+  "alert": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "id": {
+        "type": "string"
+      },
+      "machine_id": {
+        "type": "string"
+      },
+      "ts_utc": {
+        "type": "string",
+        "format": "date-time",
+        "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d(?:\\.\\d+)?(?:Z))$"
+      },
+      "fault_code": {
+        "type": "string",
+        "enum": [
+          "condenser_blocked",
+          "door_ajar",
+          "frost_buildup",
+          "interior_vent_blocked",
+          "unstable_voltage",
+          "electrical_part_fault",
+          "refrigerant_sealed_system",
+          "compressor_wear",
+          "fan_motor_failure",
+          "unknown_anomaly"
+        ]
+      },
+      "confidence": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 1
+      },
+      "severity": {
+        "type": "string",
+        "enum": [
+          "info",
+          "warning",
+          "critical"
+        ]
+      },
+      "source": {
+        "type": "string",
+        "enum": [
+          "edge",
+          "cloud"
+        ]
+      }
+    },
+    "required": [
+      "id",
+      "machine_id",
+      "ts_utc",
+      "fault_code",
+      "confidence",
+      "severity",
+      "source"
+    ],
+    "additionalProperties": false
+  },
+  "case": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "id": {
+        "type": "string"
+      },
+      "machine_id": {
+        "type": "string"
+      },
+      "fault_code": {
+        "type": "string",
+        "enum": [
+          "condenser_blocked",
+          "door_ajar",
+          "frost_buildup",
+          "interior_vent_blocked",
+          "unstable_voltage",
+          "electrical_part_fault",
+          "refrigerant_sealed_system",
+          "compressor_wear",
+          "fan_motor_failure",
+          "unknown_anomaly"
+        ]
+      },
+      "safety_status": {
+        "type": "string",
+        "enum": [
+          "allow",
+          "observe",
+          "deny"
+        ]
+      },
+      "state": {
+        "type": "string",
+        "enum": [
+          "OPEN",
+          "GUIDING",
+          "VERIFYING",
+          "RESOLVED",
+          "DISPATCHED"
+        ]
+      },
+      "opened_at": {
+        "type": "string",
+        "format": "date-time",
+        "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d(?:\\.\\d+)?(?:Z))$"
+      },
+      "closed_at": {
+        "anyOf": [
+          {
+            "type": "string",
+            "format": "date-time",
+            "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d(?:\\.\\d+)?(?:Z))$"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      }
+    },
+    "required": [
+      "id",
+      "machine_id",
+      "fault_code",
+      "safety_status",
+      "state",
+      "opened_at",
+      "closed_at"
+    ],
+    "additionalProperties": false
+  },
+  "case-event": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "oneOf": [
+      {
+        "type": "object",
+        "properties": {
+          "case_id": {
+            "type": "string"
+          },
+          "ts_utc": {
+            "type": "string",
+            "format": "date-time",
+            "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d(?:\\.\\d+)?(?:Z))$"
+          },
+          "type": {
+            "type": "string",
+            "const": "alert"
+          },
+          "payload": {
+            "type": "object",
+            "properties": {
+              "alert_id": {
+                "type": "string"
+              },
+              "fault_code": {
+                "type": "string",
+                "enum": [
+                  "condenser_blocked",
+                  "door_ajar",
+                  "frost_buildup",
+                  "interior_vent_blocked",
+                  "unstable_voltage",
+                  "electrical_part_fault",
+                  "refrigerant_sealed_system",
+                  "compressor_wear",
+                  "fan_motor_failure",
+                  "unknown_anomaly"
+                ]
+              },
+              "confidence": {
+                "type": "number"
+              },
+              "evidence_signal": {
+                "type": "string",
+                "enum": [
+                  "temp_box_c",
+                  "temp_condenser_c",
+                  "temp_discharge_c",
+                  "current_rms_a",
+                  "vib_rms_g"
+                ]
+              }
+            },
+            "required": [
+              "alert_id",
+              "fault_code",
+              "confidence",
+              "evidence_signal"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "case_id",
+          "ts_utc",
+          "type",
+          "payload"
+        ],
+        "additionalProperties": false
+      },
+      {
+        "type": "object",
+        "properties": {
+          "case_id": {
+            "type": "string"
+          },
+          "ts_utc": {
+            "type": "string",
+            "format": "date-time",
+            "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d(?:\\.\\d+)?(?:Z))$"
+          },
+          "type": {
+            "type": "string",
+            "const": "safety_check"
+          },
+          "payload": {
+            "type": "object",
+            "properties": {
+              "fault_code": {
+                "type": "string",
+                "enum": [
+                  "condenser_blocked",
+                  "door_ajar",
+                  "frost_buildup",
+                  "interior_vent_blocked",
+                  "unstable_voltage",
+                  "electrical_part_fault",
+                  "refrigerant_sealed_system",
+                  "compressor_wear",
+                  "fan_motor_failure",
+                  "unknown_anomaly"
+                ]
+              },
+              "status": {
+                "type": "string",
+                "enum": [
+                  "allow",
+                  "observe",
+                  "deny"
+                ]
+              }
+            },
+            "required": [
+              "fault_code",
+              "status"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "case_id",
+          "ts_utc",
+          "type",
+          "payload"
+        ],
+        "additionalProperties": false
+      },
+      {
+        "type": "object",
+        "properties": {
+          "case_id": {
+            "type": "string"
+          },
+          "ts_utc": {
+            "type": "string",
+            "format": "date-time",
+            "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d(?:\\.\\d+)?(?:Z))$"
+          },
+          "type": {
+            "type": "string",
+            "const": "step_shown"
+          },
+          "payload": {
+            "type": "object",
+            "properties": {
+              "order": {
+                "type": "integer",
+                "minimum": -9007199254740991,
+                "maximum": 9007199254740991
+              }
+            },
+            "required": [
+              "order"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "case_id",
+          "ts_utc",
+          "type",
+          "payload"
+        ],
+        "additionalProperties": false
+      },
+      {
+        "type": "object",
+        "properties": {
+          "case_id": {
+            "type": "string"
+          },
+          "ts_utc": {
+            "type": "string",
+            "format": "date-time",
+            "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d(?:\\.\\d+)?(?:Z))$"
+          },
+          "type": {
+            "type": "string",
+            "const": "step_done"
+          },
+          "payload": {
+            "type": "object",
+            "properties": {
+              "order": {
+                "type": "integer",
+                "minimum": -9007199254740991,
+                "maximum": 9007199254740991
+              }
+            },
+            "required": [
+              "order"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "case_id",
+          "ts_utc",
+          "type",
+          "payload"
+        ],
+        "additionalProperties": false
+      },
+      {
+        "type": "object",
+        "properties": {
+          "case_id": {
+            "type": "string"
+          },
+          "ts_utc": {
+            "type": "string",
+            "format": "date-time",
+            "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d(?:\\.\\d+)?(?:Z))$"
+          },
+          "type": {
+            "type": "string",
+            "const": "verify_start"
+          },
+          "payload": {
+            "type": "object",
+            "properties": {
+              "signal": {
+                "type": "string",
+                "enum": [
+                  "temp_box_c",
+                  "temp_condenser_c",
+                  "temp_discharge_c",
+                  "current_rms_a",
+                  "vib_rms_g"
+                ]
+              },
+              "target_range": {
+                "type": "array",
+                "prefixItems": [
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "number"
+                  }
+                ],
+                "items": false,
+                "minItems": 2,
+                "maxItems": 2
+              },
+              "wait_minutes": {
+                "type": "number"
+              }
+            },
+            "required": [
+              "signal",
+              "target_range",
+              "wait_minutes"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "case_id",
+          "ts_utc",
+          "type",
+          "payload"
+        ],
+        "additionalProperties": false
+      },
+      {
+        "type": "object",
+        "properties": {
+          "case_id": {
+            "type": "string"
+          },
+          "ts_utc": {
+            "type": "string",
+            "format": "date-time",
+            "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d(?:\\.\\d+)?(?:Z))$"
+          },
+          "type": {
+            "type": "string",
+            "const": "verify_pass"
+          },
+          "payload": {
+            "type": "object",
+            "properties": {
+              "signal": {
+                "type": "string",
+                "enum": [
+                  "temp_box_c",
+                  "temp_condenser_c",
+                  "temp_discharge_c",
+                  "current_rms_a",
+                  "vib_rms_g"
+                ]
+              },
+              "values": {
+                "type": "array",
+                "items": {
+                  "type": [
+                    "number",
+                    "null"
+                  ]
+                }
+              },
+              "target_range": {
+                "type": "array",
+                "prefixItems": [
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "number"
+                  }
+                ],
+                "items": false,
+                "minItems": 2,
+                "maxItems": 2
+              }
+            },
+            "required": [
+              "signal",
+              "values",
+              "target_range"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "case_id",
+          "ts_utc",
+          "type",
+          "payload"
+        ],
+        "additionalProperties": false
+      },
+      {
+        "type": "object",
+        "properties": {
+          "case_id": {
+            "type": "string"
+          },
+          "ts_utc": {
+            "type": "string",
+            "format": "date-time",
+            "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d(?:\\.\\d+)?(?:Z))$"
+          },
+          "type": {
+            "type": "string",
+            "const": "verify_fail"
+          },
+          "payload": {
+            "type": "object",
+            "properties": {
+              "signal": {
+                "type": "string",
+                "enum": [
+                  "temp_box_c",
+                  "temp_condenser_c",
+                  "temp_discharge_c",
+                  "current_rms_a",
+                  "vib_rms_g"
+                ]
+              },
+              "values": {
+                "type": "array",
+                "items": {
+                  "type": [
+                    "number",
+                    "null"
+                  ]
+                }
+              },
+              "target_range": {
+                "type": "array",
+                "prefixItems": [
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "number"
+                  }
+                ],
+                "items": false,
+                "minItems": 2,
+                "maxItems": 2
+              }
+            },
+            "required": [
+              "signal",
+              "values",
+              "target_range"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "case_id",
+          "ts_utc",
+          "type",
+          "payload"
+        ],
+        "additionalProperties": false
+      },
+      {
+        "type": "object",
+        "properties": {
+          "case_id": {
+            "type": "string"
+          },
+          "ts_utc": {
+            "type": "string",
+            "format": "date-time",
+            "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d(?:\\.\\d+)?(?:Z))$"
+          },
+          "type": {
+            "type": "string",
+            "const": "dispatched"
+          },
+          "payload": {
+            "type": "object",
+            "properties": {
+              "dispatch_id": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "dispatch_id"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "case_id",
+          "ts_utc",
+          "type",
+          "payload"
+        ],
+        "additionalProperties": false
+      },
+      {
+        "type": "object",
+        "properties": {
+          "case_id": {
+            "type": "string"
+          },
+          "ts_utc": {
+            "type": "string",
+            "format": "date-time",
+            "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d(?:\\.\\d+)?(?:Z))$"
+          },
+          "type": {
+            "type": "string",
+            "const": "technician_confirmed"
+          },
+          "payload": {
+            "type": "object",
+            "properties": {},
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "case_id",
+          "ts_utc",
+          "type",
+          "payload"
+        ],
+        "additionalProperties": false
+      }
+    ]
+  },
+  "safety-rule": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "fault_code": {
+        "type": "string",
+        "enum": [
+          "condenser_blocked",
+          "door_ajar",
+          "frost_buildup",
+          "interior_vent_blocked",
+          "unstable_voltage",
+          "electrical_part_fault",
+          "refrigerant_sealed_system",
+          "compressor_wear",
+          "fan_motor_failure",
+          "unknown_anomaly"
+        ]
+      },
+      "fault_name_id": {
+        "type": "string"
+      },
+      "fault_name_en": {
+        "type": "string"
+      },
+      "status": {
+        "type": "string",
+        "enum": [
+          "allow",
+          "observe",
+          "deny"
+        ]
+      },
+      "steps": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "text_id": {
+              "type": "string"
+            },
+            "text_en": {
+              "type": "string"
+            },
+            "order": {
+              "type": "integer",
+              "minimum": -9007199254740991,
+              "maximum": 9007199254740991
+            }
+          },
+          "required": [
+            "text_id",
+            "text_en",
+            "order"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "verify_rule": {
+        "anyOf": [
+          {
+            "type": "object",
+            "properties": {
+              "signal": {
+                "type": "string",
+                "enum": [
+                  "temp_box_c",
+                  "temp_condenser_c",
+                  "temp_discharge_c",
+                  "current_rms_a",
+                  "vib_rms_g"
+                ]
+              },
+              "target": {
+                "type": "string",
+                "const": "normal_band"
+              },
+              "wait_minutes": {
+                "type": "number"
+              }
+            },
+            "required": [
+              "signal",
+              "target",
+              "wait_minutes"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "escalate_when": {
+        "type": "object",
+        "properties": {
+          "text_id": {
+            "type": "string"
+          },
+          "text_en": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "text_id",
+          "text_en"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "required": [
+      "fault_code",
+      "fault_name_id",
+      "fault_name_en",
+      "status",
+      "steps",
+      "verify_rule",
+      "escalate_when"
+    ],
+    "additionalProperties": false
+  },
+  "global-rule": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "text_id": {
+        "type": "string"
+      },
+      "text_en": {
+        "type": "string"
+      },
+      "order": {
+        "type": "integer",
+        "minimum": -9007199254740991,
+        "maximum": 9007199254740991
+      }
+    },
+    "required": [
+      "text_id",
+      "text_en",
+      "order"
+    ],
+    "additionalProperties": false
+  },
+  "dispatch": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "id": {
+        "type": "string"
+      },
+      "case_id": {
+        "type": "string"
+      },
+      "channel": {
+        "type": "string",
+        "enum": [
+          "whatsapp",
+          "sms",
+          "mock"
+        ]
+      },
+      "sent_at": {
+        "type": "string",
+        "format": "date-time",
+        "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d(?:\\.\\d+)?(?:Z))$"
+      },
+      "delivery_status": {
+        "type": "string",
+        "enum": [
+          "queued",
+          "sent",
+          "delivered",
+          "failed"
+        ]
+      },
+      "message_text": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "id",
+      "case_id",
+      "channel",
+      "sent_at",
+      "delivery_status",
+      "message_text"
+    ],
+    "additionalProperties": false
+  }
+}
