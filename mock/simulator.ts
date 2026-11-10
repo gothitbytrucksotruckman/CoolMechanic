@@ -31,7 +31,7 @@ export interface Simulator {
 
 const MIN = 60_000
 const HISTORY_MIN = 6 * 60
-const MAX_READINGS = 24 * 60 + 1 // shortcut: ring-buffer cap at 24h, raise if a longer history view is added
+const MAX_READINGS = 4 * 24 * 60 + 1 // shortcut: 4 virtual days (~4 real hours at 60x), raise if a longer demo or history view is needed
 const DROPOUT = { machineId: 'm-01', startBeforeMin: 180, minutes: 10 } // m-01 discharge probe gap, shows "sensor lepas"
 const CARETAKER_DELAY_MIN = 6 // simulated caretaker taps "done" this long after the steps are shown (ADR-003)
 const VERIFY_SAMPLES = 5

@@ -14,6 +14,14 @@ Owner tags: `[UI]` `[DATA]` `[API]` `[DOCS]` `[INS]` `[ALL]`. Rangga owns all da
 - [ ] [DATA] Replace simulated signal shapes with test-rig recordings once they exist  (no date — waits on hardware) #P6
 - [ ] [API] `httpSource` adapter reading the same contract (P6)  (after first submission) #P6
 
+## Deferred from final review (minor)
+- [ ] [DATA] unknown_anomaly vibration stays in band at alert time, so its work order has no evidence line; steepen the drift and pin with a test
+- [ ] [DATA] m-01 "sensor lepas" gap scrolls out of the 3h window ~10 s after Play at 60x; move it nearer start, or show it before pressing Play
+- [ ] [UI] Add a router errorElement + catch-all route (wrong hash shows React Router's English 404)
+- [ ] [UI] Busy message between trigger and alert says "kasus terbuka" before a case exists; add a "skenario sedang berjalan" reason
+- [ ] [API] useSourceData: ignore out-of-order responses (sequence counter) when httpSource lands in P6
+- [ ] [UI] Keep the test-only i18n key out of the production id.json
+
 ## Roadmap (labelled, not in this round)
 - Standalone Sites, Alerts and Dispatches pages; allow/observe scenarios `door_ajar`, `frost_buildup`, `interior_vent_blocked`, `unstable_voltage`; offline banner (with P6); phone-frame caretaker view; live highlight on the Architecture page.
 

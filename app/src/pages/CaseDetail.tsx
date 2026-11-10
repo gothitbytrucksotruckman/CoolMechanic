@@ -1,4 +1,5 @@
 import { Link, useParams } from 'react-router'
+import type { Case, CaseEvent } from '../../../contract/schemas'
 import { Card } from '../components/Card'
 import { CaretakerSteps } from '../components/CaretakerSteps'
 import { CaseTimeline } from '../components/CaseTimeline'
@@ -14,6 +15,17 @@ import { useT } from '../i18n/i18n'
 import { faultName } from '../i18n/labels'
 
 const BEFORE_MIN = 30
+const AFTER_DISPATCH_MIN = 10
+
+// The before/after window: 30 min before the case opened, to its close, or a little past dispatch
+// (DISPATCHED cases stay open, so "now" would stretch the chart forever at 60x).
+export function caseChartWindow(c: Case, events: CaseEvent[], now: string): [string, string] {
+  const from = new Date(Date.parse(c.opened_at) - BEFORE_MIN * 60_000).toISOString()
+  const dispatched = events.find((e) => e.type === 'dispatched')
+  const end = c.closed_at
+    ?? (dispatched ? new Date(Math.min(Date.parse(now), Date.parse(dispatched.ts_utc) + AFTER_DISPATCH_MIN * 60_000)).toISOString() : now)
+  return [from, end]
+}
 
 export function CaseDetail() {
   const { id = '' } = useParams()
@@ -25,11 +37,11 @@ export function CaseDetail() {
     const alert = bundle.events.find((e) => e.type === 'alert')
     const vs = bundle.events.find((e) => e.type === 'verify_start')
     const signal = vs?.type === 'verify_start' ? vs.payload.signal : alert?.type === 'alert' ? alert.payload.evidence_signal : undefined
-    const from = new Date(Date.parse(c.opened_at) - BEFORE_MIN * 60_000).toISOString()
+    const [from, to] = caseChartWindow(c, bundle.events, ds.now())
     const [machine, rules, bands, readings] = await Promise.all([
       ds.listMachines().then((ms) => ms.find((m) => m.id === c.machine_id)),
       ds.listSafetyRules(), ds.listNormalBands(c.machine_id),
-      ds.getReadings(c.machine_id, from, c.closed_at ?? ds.now()),
+      ds.getReadings(c.machine_id, from, to),
     ])
     return { bundle, machine, rule: rules.find((r) => r.fault_code === c.fault_code), signal, bands, readings }
   }, [id])

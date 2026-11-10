@@ -33,6 +33,12 @@ test.each(['m-01', 'm-02', 'm-03', 'm-04', 'm-05'])('electrical fault on %s: wor
   expect(value).toBeGreaterThan(high)
 })
 
+test('a case chart window is still readable after 30 virtual hours (long demo at 60x)', () => {
+  const s = createSimulator(); s.trigger('condenser_blocked', 'm-01'); s.advance(30 * 60)
+  const c = s.cases()[0]
+  expect(s.readings('m-01', c.opened_at, c.closed_at!).length).toBeGreaterThan(10)
+})
+
 test('box temperature is still in band when the condenser alert fires', () => {
   const s = createSimulator(); s.trigger('condenser_blocked', 'm-01'); s.advance(8)
   const box = normalBands(MACHINES[0]).find(b => b.signal === 'temp_box_c')!

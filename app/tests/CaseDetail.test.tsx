@@ -3,7 +3,7 @@ import { SAFETY_RULES } from '../../mock/seed'
 import { CaretakerSteps } from '../src/components/CaretakerSteps'
 import { createMockSource } from '../src/data/mockSource'
 import { I18nProvider } from '../src/i18n/i18n'
-import { CaseDetail } from '../src/pages/CaseDetail'
+import { CaseDetail, caseChartWindow } from '../src/pages/CaseDetail'
 import { renderWithSource } from './render'
 
 const allowRule = SAFETY_RULES.find(r => r.fault_code === 'condenser_blocked')!
@@ -51,6 +51,14 @@ test('a case still guiding shows pending later steps', async () => {
   const ds = createMockSource(); ds.demo!.trigger('condenser_blocked', 'm-01'); ds.demo!.advance(9)
   renderWithSource(<CaseDetail />, ds, '/kasus/case-0001')
   expect((await screen.findByTestId('step-verify')).textContent).toContain('menunggu')
+})
+
+test('a dispatched case chart window ends at dispatch, not at "now"', async () => {
+  const ds = createMockSource(); ds.demo!.trigger('electrical_part_fault', 'm-04'); ds.demo!.advance(5 * 60)
+  const b = (await ds.getCase('case-0001'))!
+  const dispatchedAt = b.events.find((e) => e.type === 'dispatched')!.ts_utc
+  const [, to] = caseChartWindow(b.case, b.events, ds.now())
+  expect(Date.parse(to)).toBeLessThanOrEqual(Date.parse(dispatchedAt) + 15 * 60_000)
 })
 
 test('Review Focus 3: stale case link shows not found', async () => {
