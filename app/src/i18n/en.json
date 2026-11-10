@@ -105,5 +105,47 @@
     "VERIFYING": "Checking the fix",
     "RESOLVED": "Resolved",
     "DISPATCHED": "Technician called"
+  },
+  "case": {
+    "not_found": "Case not found",
+    "not_found_reason": "There is no case {id}. The simulation may have been reset. Go back to the Overview.",
+    "caretaker": "What the caretaker received",
+    "no_steps": "This fault is on the deny list, so the caretaker was given no repair steps at all.",
+    "steps_pending": "Steps not sent yet.",
+    "step_done": "Done",
+    "step_waiting": "Waiting for caretaker",
+    "judge_d2": "Only safe external tasks; electrical or refrigerant faults go straight to a technician, with no steps.",
+    "before_after": "Before and after the fix",
+    "evidence": "Sensor evidence",
+    "no_signal": "This case has no signal to show.",
+    "judge_d3": "Sensors re-read after the fix: the line must return to the green band.",
+    "work_order": "Message to the technician"
+  },
+  "timeline": {
+    "label": "Five case steps",
+    "sense": "Sense",
+    "diagnose": "Diagnose",
+    "guide": "Guide",
+    "verify": "Verify",
+    "dispatch": "Dispatch",
+    "pending": "waiting",
+    "not_needed": "not needed",
+    "skipped_deny": "skipped: deny list"
+  },
+  "safety": {
+    "allow": "Caretaker may fix",
+    "observe": "Observe only",
+    "deny": "Deny list"
+  },
+  "channel": {
+    "whatsapp": "WhatsApp",
+    "sms": "SMS",
+    "mock": "Simulated (not sent)"
+  },
+  "delivery": {
+    "queued": "Queued",
+    "sent": "Sent",
+    "delivered": "Delivered",
+    "failed": "Failed"
   }
 }

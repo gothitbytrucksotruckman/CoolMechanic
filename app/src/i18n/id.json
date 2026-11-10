@@ -108,5 +108,47 @@
     "VERIFYING": "Memeriksa hasil",
     "RESOLVED": "Selesai",
     "DISPATCHED": "Teknisi dipanggil"
+  },
+  "case": {
+    "not_found": "Kasus tidak ditemukan",
+    "not_found_reason": "Tidak ada kasus {id}. Mungkin simulasi sudah di-reset. Kembali ke Ringkasan.",
+    "caretaker": "Yang diterima pengelola",
+    "no_steps": "Gangguan ini ada di daftar larangan, jadi pengelola tidak diberi langkah perbaikan apa pun.",
+    "steps_pending": "Langkah belum dikirim.",
+    "step_done": "Selesai",
+    "step_waiting": "Menunggu pengelola",
+    "judge_d2": "Hanya tugas luar yang aman; gangguan listrik atau freon langsung ke teknisi, tanpa langkah.",
+    "before_after": "Sebelum dan sesudah perbaikan",
+    "evidence": "Bukti sensor",
+    "no_signal": "Kasus ini tidak punya sinyal untuk ditampilkan.",
+    "judge_d3": "Sensor membaca ulang setelah perbaikan: garis harus kembali ke area hijau.",
+    "work_order": "Pesan untuk teknisi"
+  },
+  "timeline": {
+    "label": "Lima langkah kasus",
+    "sense": "Deteksi",
+    "diagnose": "Diagnosis",
+    "guide": "Panduan",
+    "verify": "Verifikasi",
+    "dispatch": "Teknisi",
+    "pending": "menunggu",
+    "not_needed": "tidak diperlukan",
+    "skipped_deny": "dilewati: daftar larangan"
+  },
+  "safety": {
+    "allow": "Boleh dikerjakan pengelola",
+    "observe": "Pantau saja",
+    "deny": "Daftar larangan"
+  },
+  "channel": {
+    "whatsapp": "WhatsApp",
+    "sms": "SMS",
+    "mock": "Simulasi (tidak dikirim)"
+  },
+  "delivery": {
+    "queued": "Antre",
+    "sent": "Terkirim",
+    "delivered": "Diterima",
+    "failed": "Gagal"
   }
 }
