@@ -41,5 +41,24 @@
     "rules": "Safety rules",
     "architecture": "Architecture",
     "demo": "Demo control"
+  },
+  "demo": {
+    "unavailable": "Demo controls are only available with simulated data",
+    "unavailable_reason": "The current data source is not the simulator, so scenarios cannot be triggered.",
+    "scenario": "Trigger a scenario",
+    "machine": "Machine",
+    "triggered": "Scenario {s} triggered on {m}.",
+    "refused": {
+      "busy": "This machine already has an open case",
+      "unknown_machine": "Unknown machine"
+    },
+    "time": "Simulation time",
+    "play": "Play",
+    "pause": "Pause",
+    "speed": "Speed",
+    "virtual_time": "Simulation time",
+    "reset_confirm": "Clear all cases and start over?",
+    "reset_yes": "Yes, reset",
+    "reset_no": "Cancel"
   }
 }

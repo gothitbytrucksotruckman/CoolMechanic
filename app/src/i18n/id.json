@@ -44,5 +44,24 @@
     "rules": "Aturan Keamanan",
     "architecture": "Arsitektur",
     "demo": "Kontrol Demo"
+  },
+  "demo": {
+    "unavailable": "Kontrol demo hanya tersedia untuk data simulasi",
+    "unavailable_reason": "Sumber data saat ini bukan simulator, jadi skenario tidak bisa dipicu.",
+    "scenario": "Picu skenario",
+    "machine": "Mesin",
+    "triggered": "Skenario {s} dipicu pada {m}.",
+    "refused": {
+      "busy": "Mesin sedang punya kasus terbuka",
+      "unknown_machine": "Mesin tidak dikenal"
+    },
+    "time": "Waktu simulasi",
+    "play": "Jalankan",
+    "pause": "Jeda",
+    "speed": "Kecepatan",
+    "virtual_time": "Waktu simulasi",
+    "reset_confirm": "Hapus semua kasus dan mulai ulang dari awal?",
+    "reset_yes": "Ya, reset",
+    "reset_no": "Batal"
   }
 }
