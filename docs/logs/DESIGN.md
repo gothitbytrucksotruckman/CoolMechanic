@@ -170,5 +170,5 @@ PRD §9.3 applies: Plus Jakarta Sans with tabular figures; status tokens as CSS 
 ## 8. Open items (not blocking P1)
 - First-submission date and formats: instructor (`[INS]`).
 - Whether APAC onsite presentations happen at the Regional or the National stage (the manual and the slides disagree): instructor.
-- `docs/source/` and `docs/screenshots/` are git-ignored; `docs/logs/` is tracked (ADR-010).
+- `docs/logs/` and `docs/source/PRD.md` are tracked; the rest of `docs/source/` and `docs/screenshots/` are git-ignored (ADR-010, ADR-013).
 - ~~Fan imbalance and the 20-minute window~~ resolved by ADR-009 (accepted).

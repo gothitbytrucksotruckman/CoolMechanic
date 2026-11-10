@@ -1,5 +1,8 @@
 docs/*
 !docs/logs/
+!docs/source/
+docs/source/*
+!docs/source/PRD.md
 node_modules/
 dist/
 .env

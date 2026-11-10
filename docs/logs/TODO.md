@@ -3,7 +3,7 @@
 Owner tags: `[UI]` `[DATA]` `[API]` `[DOCS]` `[INS]` `[ALL]`. Rangga owns all dashboard work (ADR-001). Due dates planned back from 15 Dec 2026.
 
 ## Now (this week)
-- [ ] [ALL] Review branch `dashboard-mvp` and merge into main  (due 2026-11-13) #P5
+- [x] [ALL] Branch `dashboard-mvp` merged into main (fast-forward, 94/94 tests on the merged tree)  (2026-11-10) #P5
 - [ ] [UI] Rehearse the demo flow live (human presenter, stopwatch) twice; log in DEMO_LOG  (due 2026-11-14) #P5
 - [ ] [DOCS] Native speaker review of the Bahasa Indonesia safety-step wording in `mock/seed.ts`  (due 2026-11-14) #P5
 - [ ] [INS] Confirm the first-submission date and the required submission formats  (due 2026-11-14) #P0

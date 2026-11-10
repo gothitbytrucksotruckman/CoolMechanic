@@ -85,6 +85,12 @@ Decision: DESIGN.md, PLAN.md and TODO.md move into `docs/logs/`. `.gitignore` ig
 Consequences: Logs, plan, TODO and design are tracked. `docs/source/` (PRD, Entry Form with personal contact details, PDFs) and `docs/screenshots/` stay local only and need a separate backup. Deviates from PRD §5/§6 paths; the session ritual reads `docs/logs/PLAN.md` and `docs/logs/TODO.md`.
 Verified against: n/a (team decision)
 
+## ADR-013: PRD.md is tracked; the rest of docs/source/ stays local  (2026-11-10, status: accepted)
+Context: DESIGN.md and the plan cite `docs/source/PRD.md`, but `docs/source/` was ignored (ADR-010), so teammates who cloned the repo couldn't read it.
+Decision: `.gitignore` re-includes `docs/source/` and then ignores everything in it except `PRD.md`. The PRD was scanned first: no phone numbers, emails or secrets.
+Consequences: Teammates get the PRD through git. The Entry Information Form (team leader's phone and email), the project doc and the competition PDFs stay local only and still need a separate backup. Any future file added to `docs/source/` is ignored by default. Amends ADR-010.
+Verified against: `git check-ignore` on every file in `docs/source/` (2026-11-10)
+
 ## ADR-012: Hash router and self-hosted font  (2026-11-10, status: accepted)
 Context: The plan marked the React Router 8 hash-router API `[VERIFY]`. The demo must run offline at the venue.
 Decision: `createHashRouter` from `react-router` with `RouterProvider` from `react-router/dom` (the DOM build wires `flushSync`). Tests use `createMemoryRouter` with the same route list. Plus Jakarta Sans is bundled through `@fontsource/plus-jakarta-sans` (400/600/700) instead of the Google Fonts CDN, so the font works with Wi-Fi off.
